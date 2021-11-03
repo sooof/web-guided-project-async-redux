@@ -3,7 +3,10 @@
 export const getPerson = ()=> {
     return (dispatch) => {
         dispatch({type:FETCH_START});
-        dispatch({type:FETCH_ERROR, payload:"Test erorr!!"});
+        setTimeout(()=> {
+            dispatch({type:FETCH_ERROR, payload:"Test erorr!!"});
+        }, 2000);
+        
     }
 }
 
