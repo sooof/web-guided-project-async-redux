@@ -5,10 +5,10 @@ export const getPerson = ()=> {
         dispatch({type: FETCH_START});
         axios.get('https://randomuser.me/api/')
           .then(resp=> {
-                dispatch(fetchSuccess(resp.data.results[0]));
+            dispatch({type:FETCH_SUCCESS, payload:resp.data.results[0]});
         })
         .catch(err => {
-            dispatch(fetchError(err));
+            dispatch({type:FETCH_ERROR, payload:err});
         });
     }
 }
