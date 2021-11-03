@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchStart, fetchSuccess, fetchError, getPerson } from './../actions';
-
-import axios from 'axios';
+import { fetchError, getPerson } from './../actions';
 
 const Person = ({ person, isFetching, error, dispatch }) => {
 
