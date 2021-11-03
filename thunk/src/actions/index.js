@@ -1,12 +1,15 @@
-
+import axios from 'axios';
 
 export const getPerson = ()=> {
     return (dispatch) => {
-        dispatch({type:FETCH_START});
-        setTimeout(()=> {
-            dispatch({type:FETCH_ERROR, payload:"Test erorr!!"});
-        }, 2000);
-        
+        dispatch({type: FETCH_START});
+        axios.get('https://randomuser.me/api/')
+          .then(resp=> {
+                dispatch(fetchSuccess(resp.data.results[0]));
+        })
+        .catch(err => {
+            dispatch(fetchError(err));
+        });
     }
 }
 
