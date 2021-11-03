@@ -12,11 +12,18 @@ const initialState = {
     }
   },
   isFetching: false,
-  error: 'asfsadff'
+  error: ''
 }
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case(FETCH_START):
+      return({
+        ...state,
+        person: {},
+        isFetching:true,
+        error:''
+      });
     default:
       return state;
   }
