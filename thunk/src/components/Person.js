@@ -9,7 +9,7 @@ const Person = ({ person, isFetching, error, dispatch }) => {
 
   useEffect(()=> {
     dispatch(getPerson());
-    
+
     // dispatch(fetchStart());
     // axios.get('https://randomuser.me/api/')
     //   .then(resp=> {
