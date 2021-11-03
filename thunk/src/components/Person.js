@@ -15,6 +15,7 @@ const Person = ({ person, isFetching, error, dispatch }) => {
 
   const handleClick = () => {
     dispatch(fetchStart());
+    //0. connect our actions to this component
     //1. make a api call to https://randomuser.me/api/
     //2. if call is successful: dispatch fetchSuccess passing in our person
     //3. if call is not successful: dispatch fetchError passing in error message
