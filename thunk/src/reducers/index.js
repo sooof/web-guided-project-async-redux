@@ -1,4 +1,4 @@
-import { FETCH_START } from './../actions';
+import { FETCH_START, FETCH_SUCCESS, FETCH_ERROR } from './../actions';
 
 const initialState = {
   person: {
