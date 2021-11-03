@@ -18,7 +18,6 @@ const Person = ({ person, isFetching, error, dispatch }) => {
   }
 
 
-
   const handleClick = () => {
     dispatch(getPerson());
     // dispatch(fetchError("this causes an eror now"));
