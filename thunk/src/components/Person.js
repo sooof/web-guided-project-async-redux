@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const Person = ({ person, isFetching, error }) => {
+import { fetchStart } from './../actions';
+
+const Person = ({ person, isFetching, error, dispatch }) => {
 
   if (error) {
     return <h2>We got an error: {error}</h2>;
@@ -12,7 +14,7 @@ const Person = ({ person, isFetching, error }) => {
   }
 
   const handleClick = () => {
-    
+    dispatch(fetchStart());
   }
 
   return (
