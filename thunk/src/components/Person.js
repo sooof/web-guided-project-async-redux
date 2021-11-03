@@ -28,14 +28,14 @@ const Person = ({ person, isFetching, error, dispatch }) => {
   }
 
   const handleClick = () => {
-    // dispatch(fetchStart());
-    // axios.get('https://randomuser.me/api/')
-    //   .then(resp=> {
-    //     dispatch(fetchSuccess(resp.data.results[0]));
-    //   })
-    //   .catch(err => {
-    //     dispatch(fetchError(err));
-    //   });
+    dispatch(fetchStart());
+    axios.get('https://randomuser.me/api/')
+      .then(resp=> {
+        dispatch(fetchSuccess(resp.data.results[0]));
+      })
+      .catch(err => {
+        dispatch(fetchError(err));
+      });
 
     //0. connect our actions to this component
     //1. make a api call to https://randomuser.me/api/
