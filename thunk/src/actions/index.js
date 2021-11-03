@@ -2,14 +2,14 @@ import axios from 'axios';
 
 export const getPerson = ()=> {
     return (dispatch) => {
-        dispatch(fetchStart();
+        dispatch(fetchStart());
 
         axios.get('https://randomuser.me/api/')
           .then(resp=> {
-            dispatch({type:FETCH_SUCCESS, payload:resp.data.results[0]});
+            dispatch(fetchSuccess(resp.data.results[0]));
         })
         .catch(err => {
-            dispatch({type:FETCH_ERROR, payload:err});
+            dispatch(fetchError(err));
         });
     }
 }
