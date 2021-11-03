@@ -1,8 +1,8 @@
 
 
-const getPerson = ()=> {
+export const getPerson = ()=> {
     return (dispatch) => {
-        
+        dispatch({type:FETCH_START});
     }
 }
 

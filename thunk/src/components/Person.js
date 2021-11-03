@@ -1,21 +1,23 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchStart, fetchSuccess, fetchError } from './../actions';
+import { fetchStart, fetchSuccess, fetchError, getPerson } from './../actions';
 
 import axios from 'axios';
 
 const Person = ({ person, isFetching, error, dispatch }) => {
 
   useEffect(()=> {
-    dispatch(fetchStart());
-    axios.get('https://randomuser.me/api/')
-      .then(resp=> {
-        dispatch(fetchSuccess(resp.data.results[0]));
-      })
-      .catch(err => {
-        dispatch(fetchError(err));
-      });
+    dispatch(getPerson());
+    
+    // dispatch(fetchStart());
+    // axios.get('https://randomuser.me/api/')
+    //   .then(resp=> {
+    //     dispatch(fetchSuccess(resp.data.results[0]));
+    //   })
+    //   .catch(err => {
+    //     dispatch(fetchError(err));
+    //   });
   }, []);
 
 
