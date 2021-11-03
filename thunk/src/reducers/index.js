@@ -12,8 +12,8 @@ const initialState = {
     }
   },
   isFetching: false,
-  error: ''
-};
+  error: 'asfsadff'
+}
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
