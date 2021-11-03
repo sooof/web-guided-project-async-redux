@@ -19,6 +19,7 @@ const Person = ({ person, isFetching, error, dispatch }) => {
     dispatch(fetchStart());
     axios.get('https://randomuser.me/api/')
       .then(resp=> {
+        console.log(resp);
         // dispatch(fetchSuccess());
       })
     //0. connect our actions to this component
