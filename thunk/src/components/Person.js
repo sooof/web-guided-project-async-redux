@@ -17,7 +17,10 @@ const Person = ({ person, isFetching, error, dispatch }) => {
 
   const handleClick = () => {
     dispatch(fetchStart());
-    axios.get()
+    axios.get('https://randomuser.me/api/')
+      .then(resp=> {
+        // dispatch(fetchSuccess());
+      })
     //0. connect our actions to this component
     //1. make a api call to https://randomuser.me/api/
     //2. if call is successful: dispatch fetchSuccess passing in our person
