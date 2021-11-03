@@ -19,8 +19,8 @@ const Person = ({ person, isFetching, error, dispatch }) => {
     dispatch(fetchStart());
     axios.get('https://randomuser.me/api/')
       .then(resp=> {
-        // console.log(resp);
-        dispatch(fetchSuccess(resp.data.results[0]));
+        // dispatch(fetchSuccess(resp.data.results[0]));
+        dispatch(fetchError(err));
       })
       .catch(err => {
         dispatch(fetchError(err));
