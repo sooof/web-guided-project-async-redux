@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { fetchStart } from './../actions';
+import { fetchStart, fetchSuccess } from './../actions';
+
+import axios from 'axios';
 
 const Person = ({ person, isFetching, error, dispatch }) => {
 
@@ -15,6 +17,7 @@ const Person = ({ person, isFetching, error, dispatch }) => {
 
   const handleClick = () => {
     dispatch(fetchStart());
+    axios.get()
     //0. connect our actions to this component
     //1. make a api call to https://randomuser.me/api/
     //2. if call is successful: dispatch fetchSuccess passing in our person
