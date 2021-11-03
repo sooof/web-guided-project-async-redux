@@ -18,8 +18,11 @@ const Person = ({ person, isFetching, error, dispatch }) => {
     return <h2>Fetching person for ya!</h2>;
   }
 
+
+
   const handleClick = () => {
-    dispatch(getPerson());
+    // dispatch(getPerson());
+    dispatch(fetchError("this causes an erorr now"));
 
     //0. connect our actions to this component
     //1. make a api call to https://randomuser.me/api/
