@@ -11,13 +11,17 @@ const Person = ({ person, isFetching, error }) => {
     return <h2>Fetching person for ya!</h2>;
   }
 
+  const handleClick = () => {
+    
+  }
+
   return (
     <>
       <div>
         <h2>Say Hi to: {person.name.first} {person.name.last}</h2>
         <img src={person.picture.large}/>
       </div>
-      <button>Get new person</button>
+      <button onClick={handleClick}>Get new person</button>
     </>
   );
 };
