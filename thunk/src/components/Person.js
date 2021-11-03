@@ -9,7 +9,6 @@ const Person = ({ person, isFetching, error, dispatch }) => {
     dispatch(getPerson());
   }, []);
 
-
   if (error) {
     return <h2>We got an error: {error}</h2>;
   }
