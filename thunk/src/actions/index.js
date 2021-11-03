@@ -2,8 +2,8 @@ import axios from 'axios';
 
 export const getPerson = ()=> {
     return (dispatch) => {
-        dispatch({type: FETCH_START});
-        
+        dispatch(fetchStart();
+
         axios.get('https://randomuser.me/api/')
           .then(resp=> {
             dispatch({type:FETCH_SUCCESS, payload:resp.data.results[0]});
