@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { fetchStart, fetchSuccess, fetchError } from './../actions';
@@ -15,6 +15,17 @@ const Person = ({ person, isFetching, error, dispatch }) => {
     return <h2>Fetching person for ya!</h2>;
   }
 
+  useEffect(()=> {
+    dispatch(fetchStart());
+    axios.get('https://randomuser.me/api/')
+      .then(resp=> {
+        dispatch(fetchSuccess(resp.data.results[0]));
+      })
+      .catch(err => {
+        dispatch(fetchError(err));
+      });
+  }, []);
+
   const handleClick = () => {
     dispatch(fetchStart());
     axios.get('https://randomuser.me/api/')
@@ -24,6 +35,7 @@ const Person = ({ person, isFetching, error, dispatch }) => {
       .catch(err => {
         dispatch(fetchError(err));
       });
+
     //0. connect our actions to this component
     //1. make a api call to https://randomuser.me/api/
     //2. if call is successful: dispatch fetchSuccess passing in our person
