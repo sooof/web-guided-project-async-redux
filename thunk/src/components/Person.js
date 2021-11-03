@@ -17,13 +17,13 @@ const Person = ({ person, isFetching, error, dispatch }) => {
 
   useEffect(()=> {
     dispatch(fetchStart());
-    axios.get('https://randomuser.me/api/')
-      .then(resp=> {
-        dispatch(fetchSuccess(resp.data.results[0]));
-      })
-      .catch(err => {
-        dispatch(fetchError(err));
-      });
+    // axios.get('https://randomuser.me/api/')
+    //   .then(resp=> {
+    //     dispatch(fetchSuccess(resp.data.results[0]));
+    //   })
+    //   .catch(err => {
+    //     dispatch(fetchError(err));
+    //   });
   }, []);
 
   const handleClick = () => {
