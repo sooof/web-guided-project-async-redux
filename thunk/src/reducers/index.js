@@ -1,3 +1,5 @@
+import { FETCH_START } from './../actions';
+
 const initialState = {
   person: {
     name: {
