@@ -2,23 +2,23 @@
    
 import { FETCH_START, FETCH_SUCCESS, FETCH_ERROR } from './../actions';
 // display state
-// const initialState = {
-//   person: {
-//     name: {
-//       title: "Mr",
-//       first: "Silas",
-//       last: "Petersen"
-//     },
-//     picture: {
-//       large: "https://randomuser.me/api/portraits/men/70.jpg",
-//       medium: "https://randomuser.me/api/portraits/med/men/70.jpg",
-//       thumbnail: "https://randomuser.me/api/portraits/thumb/men/70.jpg"
-//     }
-//   },
-//   isFetching: false,
-//   //error: 'Hey we have an error'
-//   error: ''
-// };
+const initialState = {
+  person: {
+    name: {
+      title: "Mr",
+      first: "Silas",
+      last: "Petersen"
+    },
+    picture: {
+      large: "https://randomuser.me/api/portraits/men/70.jpg",
+      medium: "https://randomuser.me/api/portraits/med/men/70.jpg",
+      thumbnail: "https://randomuser.me/api/portraits/thumb/men/70.jpg"
+    }
+  },
+  isFetching: false,
+  //error: 'Hey we have an error'
+  error: ''
+};
 
 // Load state
 // const initialState = {
@@ -38,32 +38,46 @@ import { FETCH_START, FETCH_SUCCESS, FETCH_ERROR } from './../actions';
 // };
 // Error state
 // 2
-const initialState = {
-  person: {
-    name: {
-      title: "Mr",
-      first: "Silas",
-      last: "Petersen"
-    },
-    picture: {
-      large: "https://randomuser.me/api/portraits/men/70.jpg",
-      medium: "https://randomuser.me/api/portraits/med/men/70.jpg",
-      thumbnail: "https://randomuser.me/api/portraits/thumb/men/70.jpg"
-    }
-  },
-  isFetching: false,
-  error: 'Hey we have an error'
-};
+// const initialState = {
+//   person: {
+//     name: {
+//       title: "Mr",
+//       first: "Silas",
+//       last: "Petersen"
+//     },
+//     picture: {
+//       large: "https://randomuser.me/api/portraits/men/70.jpg",
+//       medium: "https://randomuser.me/api/portraits/med/men/70.jpg",
+//       thumbnail: "https://randomuser.me/api/portraits/thumb/men/70.jpg"
+//     }
+//   },
+//   isFetching: false,
+//   error: 'Hey we have an error'
+// };
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_START:
-      return ({
+    case(FETCH_START):
+      return({
         ...state,
         person: {},
-        isFinite: true,
+        isFetching:true,
+        error:''
+      });
+      case(FETCH_SUCCESS):
+      return({
+        ...state,
+        person: action.payload,
+        isFetching: false,
         error: ''
       });
+      case(FETCH_ERROR):
+      return({
+        ...state,
+        person:{},
+        isFetching: false,
+        error: action.payload
+      })
     default:
       return state;
   }
