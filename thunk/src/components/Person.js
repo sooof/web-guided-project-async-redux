@@ -29,6 +29,19 @@ const Person = ({ person, isFetching, error, dispatch }) => {
   if (isFetching) {
     return <h2>Fetching person for ya!</h2>;
   }
+  // put here hava ERROR
+  // useEffect(()=> {
+  //   console.log("useEffect")
+  //   dispatch(fetchStart());
+  //   axios.get('https://randomuser.me/api/')
+  //     .then(resp=> {
+  //       dispatch(fetchSuccess(resp.data.results[0]));
+  //     })
+  //     .catch(err => {
+  //       dispatch(fetchError(err));
+  //     });
+  // }, []);
+
   const handleClick = () => {
     dispatch(fetchStart());
     axios.get('https://randomuser.me/api/')
