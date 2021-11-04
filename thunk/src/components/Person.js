@@ -6,20 +6,21 @@ import { connect } from 'react-redux';
 
 import axios from 'axios';
 
-import { fetchStart, fetchSuccess, fetchError } from './../actions';
+import { fetchStart, fetchSuccess, fetchError ,getPerson} from './../actions';
 
 const Person = ({ person, isFetching, error, dispatch }) => {
 
   useEffect(()=> {
     console.log("useEffect")
-    dispatch(fetchStart());
-    axios.get('https://randomuser.me/api/')
-      .then(resp=> {
-        dispatch(fetchSuccess(resp.data.results[0]));
-      })
-      .catch(err => {
-        dispatch(fetchError(err));
-      });
+    dispatch(getPerson());
+    // dispatch(fetchStart());
+    // axios.get('https://randomuser.me/api/')
+    //   .then(resp=> {
+    //     dispatch(fetchSuccess(resp.data.results[0]));
+    //   })
+    //   .catch(err => {
+    //     dispatch(fetchError(err));
+    //   });
   }, []);
 
 
