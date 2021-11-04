@@ -1,10 +1,26 @@
-import React from 'react';
+
+   
+import React, { useEffect } from 'react';
+
 import { connect } from 'react-redux';
 import axios from 'axios';
 
-import { fetchStart, fetchSuccess } from './../actions';
+import { fetchStart, fetchSuccess, fetchError } from './../actions';
 
 const Person = ({ person, isFetching, error, dispatch }) => {
+
+  useEffect(()=> {
+    console.log("useEffect")
+    dispatch(fetchStart());
+    axios.get('https://randomuser.me/api/')
+      .then(resp=> {
+        dispatch(fetchSuccess(resp.data.results[0]));
+      })
+      .catch(err => {
+        dispatch(fetchError(err));
+      });
+  }, []);
+
 
   if (error) {
     return <h2>We got an error: {error}</h2>;
@@ -18,10 +34,11 @@ const Person = ({ person, isFetching, error, dispatch }) => {
     axios.get('https://randomuser.me/api/')
     .then(resp=> {
       //console.log(resp)
-      dispatch(fetchSuccess(resp.data.results[0]));
+      //dispatch(fetchSuccess(resp.data.results[0]));  
+      dispatch(fetchError("jjdjjjdfnj"));
     })
     .catch(err => {
-      // dispatch(fetchError(err));
+      dispatch(fetchError(err));
     });
     // dispatch(fetchError("this causes an eror now"));
 
