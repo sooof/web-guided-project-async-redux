@@ -48,8 +48,8 @@ const Person = ({ person, isFetching, error, dispatch }) => {
     axios.get('https://randomuser.me/api/')
     .then(resp=> {
       //console.log(resp)
-      //dispatch(fetchSuccess(resp.data.results[0]));  
-      dispatch(fetchError("jjdjjjdfnj"));
+      dispatch(fetchSuccess(resp.data.results[0]));  
+      // dispatch(fetchError("jjdjjjdfnj"));
     })
     .catch(err => {
       dispatch(fetchError(err));
