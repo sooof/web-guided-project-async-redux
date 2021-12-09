@@ -39,7 +39,7 @@ function App() {
       {/* <Person /> */}
       {
         result.map( book => (
-          <a>
+          <a target="_blank" href={book.volumeInfo.previewLink}>
             <img src={book.volumeInfo.imageLinks.thumbnail} />
           </a>
         ))
