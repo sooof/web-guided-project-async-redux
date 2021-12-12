@@ -11,7 +11,7 @@ export const fetchSuccess = (person)=> {
     return({type: FETCH_SUCCESS, payload:person});
 }
 
-export const FETCH_POKEMON_FAILURE = 'FETCH_POKEMON_FAILURE';
+export const FETCH_ERROR = 'FETCH_ERROR';
 
 export const fetchError = (errorMessage)=> {
     return({type: FETCH_ERROR, payload:errorMessage});

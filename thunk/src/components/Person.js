@@ -63,6 +63,9 @@ const Person = (props) => {
         <img src={person.picture.large}/>
       </div>
       <button onClick={handleClick}>Get new person</button>
+      <button onClick={()=>{
+       dispatch(fetchError("YOU HIT THE ERROR BUTTON")) 
+      }}>ERROR BUTTON</button>
     </>
   );
 };
