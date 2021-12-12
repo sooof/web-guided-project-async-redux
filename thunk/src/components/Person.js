@@ -1,14 +1,27 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchStart, fetchSuccess, fetchError} from "./../actions"
+import { fetchStart, fetchSuccess, fetchError, getPerson} from "./../actions"
 import axios from 'axios';
 
 const Person = (props) => {
-    const { person, isFetching, fetchSuccess, error } = props
+    const { person, isFetching, fetchSuccess, fetchError, getPerson, error } = props
     // console.log("Person = ", props)
     useEffect(() => {
-
-    })
+      props.fetchStart();
+      // 2 axios call
+      axios.get('https://randomuser.me/api/')
+        .then(resp => {
+          // 3 If axios call is success, dispatch(fetchSuccess),
+          // console.log("3", resp.data.results)
+          // console.log("3",resp.data.results[0])
+          props.fetchSuccess(resp.data.results[0])
+        })
+        .catch( err => {
+          // 4 If axios call is fails, dispatch(fetchFail)
+          // console.log(err)
+          props.fetchError(err)
+        })
+    }, [])
   if (error) {
     return <h2>We got an error: {error}</h2>;
   }
@@ -57,4 +70,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, {fetchStart, fetchSuccess})(Person);
+export default connect(mapStateToProps, {fetchStart, fetchSuccess, fetchError})(Person);
