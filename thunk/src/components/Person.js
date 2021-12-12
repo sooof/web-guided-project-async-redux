@@ -5,22 +5,23 @@ import axios from 'axios';
 
 const Person = (props) => {
     const { person, isFetching, fetchSuccess, fetchError, getPerson, error } = props
-    // console.log("Person = ", props)
+    console.log("Person = ", props)
     useEffect(() => {
-      props.fetchStart();
-      // 2 axios call
-      axios.get('https://randomuser.me/api/')
-        .then(resp => {
-          // 3 If axios call is success, dispatch(fetchSuccess),
-          // console.log("3", resp.data.results)
-          // console.log("3",resp.data.results[0])
-          props.fetchSuccess(resp.data.results[0])
-        })
-        .catch( err => {
-          // 4 If axios call is fails, dispatch(fetchFail)
-          // console.log(err)
-          props.fetchError(err)
-        })
+      props.getPerson()
+      // props.fetchStart();
+      // // 2 axios call
+      // axios.get('https://randomuser.me/api/')
+      //   .then(resp => {
+      //     // 3 If axios call is success, dispatch(fetchSuccess),
+      //     // console.log("3", resp.data.results)
+      //     // console.log("3",resp.data.results[0])
+      //     props.fetchSuccess(resp.data.results[0])
+      //   })
+      //   .catch( err => {
+      //     // 4 If axios call is fails, dispatch(fetchFail)
+      //     // console.log(err)
+      //     props.fetchError(err)
+      //   })
     }, [])
   if (error) {
     return <h2>We got an error: {error}</h2>;
@@ -31,22 +32,23 @@ const Person = (props) => {
   }
 
   const handleClick = () => {
+    props.getPerson() 
     // 1 dispatch(fetchStart())
     // console.log("handleClick")
-    props.fetchStart();
-    // 2 axios call
-    axios.get('https://randomuser.me/api/')
-      .then(resp => {
-        // 3 If axios call is success, dispatch(fetchSuccess),
-        // console.log("3", resp.data.results)
-        // console.log("3",resp.data.results[0])
-        props.fetchSuccess(resp.data.results[0])
-      })
-      .catch( err => {
-        // 4 If axios call is fails, dispatch(fetchFail)
-        console.log(err)
-        props.fetchError(err)
-      })
+    // props.fetchStart();
+    // // 2 axios call
+    // axios.get('https://randomuser.me/api/')
+    //   .then(resp => {
+    //     // 3 If axios call is success, dispatch(fetchSuccess),
+    //     // console.log("3", resp.data.results)
+    //     // console.log("3",resp.data.results[0])
+    //     props.fetchSuccess(resp.data.results[0])
+    //   })
+    //   .catch( err => {
+    //     // 4 If axios call is fails, dispatch(fetchFail)
+    //     console.log(err)
+    //     props.fetchError(err)
+    //   })
    
 
   }
@@ -70,4 +72,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, {fetchStart, fetchSuccess, fetchError})(Person);
+export default connect(mapStateToProps, {fetchStart, fetchSuccess, fetchError, getPerson})(Person);
