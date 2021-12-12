@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchStart, fetchSuccess, fetchError} from "./../actions"
+import axios from 'axios';
 
 const Person = (props) => {
-    const { person, isFetching, error } = props
-    console.log("Person = ", props)
+    const { person, isFetching, fetchSuccess, error } = props
+    // console.log("Person = ", props)
     useEffect(() => {
 
     })
@@ -18,8 +19,23 @@ const Person = (props) => {
 
   const handleClick = () => {
     // 1 dispatch(fetchStart())
-    console.log("handleClick")
+    // console.log("handleClick")
     props.fetchStart();
+    // 2 axios call
+    axios.get('https://randomuser.me/api/')
+      .then(resp => {
+        // 3 If axios call is success, dispatch(fetchSuccess),
+        // console.log("3", resp.data.results)
+        // console.log("3",resp.data.results[0])
+        props.fetchSuccess(resp.data.results[0])
+      })
+      .catch( err => {
+        // 4 If axios call is fails, dispatch(fetchFail)
+        console.log(err)
+        props.fetchError(err)
+      })
+   
+
   }
 
   return (
@@ -41,4 +57,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, {fetchStart})(Person);
+export default connect(mapStateToProps, {fetchStart, fetchSuccess})(Person);
